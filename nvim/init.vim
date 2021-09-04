@@ -16,6 +16,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 Plug 'tmux-plugins/vim-tmux'
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 "vim git
 Plug 'APZelos/blamer.nvim'
 Plug 'airblade/vim-gitgutter'
@@ -51,7 +54,7 @@ call plug#end()
 "git blame config
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
-let g:blamer_prefix = ' > '
+let g:blamer_prefix = ' '
 let g:blamer_relative_time = 1
 highlight Blamer guifg=lightgrey
 
@@ -72,6 +75,10 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"snippet config
+let g:UltiSnipsEditSplit="vertical"
+
 
 filetype plugin on
 
