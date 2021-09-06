@@ -13,6 +13,12 @@ Plug 'isRuslan/vim-es6'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
+Plug 'mattn/emmet-vim'
+Plug 'tmux-plugins/vim-tmux'
+
+"vim git
+Plug 'APZelos/blamer.nvim'
+Plug 'airblade/vim-gitgutter'
 
 "vim javascript
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -42,9 +48,12 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-if(has("termguicolors"))
-  set termguicolors
-endif
+"git blame config
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+let g:blamer_prefix = ' > '
+let g:blamer_relative_time = 1
+highlight Blamer guifg=lightgrey
 
 set hidden
 set autoindent
@@ -62,6 +71,7 @@ set cmdheight=1
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 filetype plugin on
 
@@ -98,12 +108,28 @@ let g:onedark_color_overrides = {
 syntax enable
 colorscheme onedark
 
+"Tmux config
+if exists('$TMUX')
+  " Colors in tmux
+  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 
 map <c-b> :NERDTreeToggle<CR>
 map <c-d> :NERDTreeFind<CR>
 
 let mapleader="\<space>"
-nnoremap <leader>w :w<CR>   "save current file
+
+nnoremap <leader>w :w<CR>
 nnoremap <leader>; A;<esc>  "add ; end line
 nnoremap <leader>W :wincmd k<CR> " go window up
 nnoremap <leader>S :wincmd j<CR> " go window down
@@ -123,3 +149,4 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <c-p> :Files<cr>
 
 nnoremap <c-f> :Ag<space>
+
