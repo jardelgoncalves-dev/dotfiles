@@ -15,7 +15,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'othree/html5.vim'
 
+"vim snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -30,8 +32,21 @@ Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 "vim typescript
 Plug 'leafgarland/typescript-vim'
 
+"vim styled components
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
 "highlight to jsx and tsx
 Plug 'maxmellon/vim-jsx-pretty'
+
+"vim less/sass
+ Plug 'groenewege/vim-less'
+ Plug 'cakebaker/scss-syntax.vim'
+
+"css highlight color
+Plug 'ap/vim-css-color'
+
+"vim docker
+Plug 'ekalinin/dockerfile.vim'
 
 "search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
@@ -40,11 +55,13 @@ Plug 'junegunn/fzf.vim'
 "linter
 Plug 'w0rp/ale'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'} "completation
+"coc vim completation
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "theme
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'joshdick/onedark.vim'
+Plug 'mhartington/oceanic-next'
 
 "icons
 Plug 'ryanoasis/vim-devicons'
@@ -76,9 +93,10 @@ set shortmess+=c
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-"snippet config
+"vim snippets config
 let g:UltiSnipsEditSplit="vertical"
-
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsSnippetsDir = '~/.config/nvim/UltiSnips'
 
 filetype plugin on
 
